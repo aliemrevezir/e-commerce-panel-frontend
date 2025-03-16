@@ -36,16 +36,22 @@ export default function DashboardPage() {
       setError(null)
       
       try {
-        const [orders, products, lowStock] = await Promise.all([
+        const [recentOrders, products, lowStock, allOrders] = await Promise.all([
           dashboardApi.getRecentOrders(user.business.id),
           dashboardApi.getRecentProducts(user.business.id),
           dashboardApi.getLowStockProducts(user.business.id),
+          dashboardApi.getAllOrders(user.business.id),
         ])
 
-        setRecentOrders(orders)
+        // Calculate stats from all orders
+        const total = allOrders.reduce((sum, order) => sum + Number(order.total_amount), 0)
+        const count = allOrders.length
+
+        setRecentOrders(recentOrders)
         setRecentProducts(products)
         setLowStockProducts(lowStock)
-
+        setTotalSales(total)
+        setOrderCount(count)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Bir hata oluştu')
       } finally {

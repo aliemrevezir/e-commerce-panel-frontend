@@ -13,6 +13,11 @@ export const dashboardApi = {
     return response.data
   },
 
+  async getAllOrders(businessId: number): Promise<OrderSummary[]> {
+    const response = await apiClient.get<ApiResponse<OrderSummary[]>>(`/orders?business_id=${businessId}`)
+    return response.data
+  },
+
   async getRecentProducts(businessId: number): Promise<Product[]> {
     const response = await apiClient.get<ApiResponse<Product[]>>(`/products?business_id=${businessId}&limit=5`)
     return response.data
