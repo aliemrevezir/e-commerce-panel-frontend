@@ -1,0 +1,34 @@
+---
+description: This file contains general rules for frontend.
+globs: 
+alwaysApply: false
+---
+
+# General Practices
+Use Functional Components: Ensure all components are functional, utilizing React hooks.
+Use Turkish words on frontend, however you can use english for naming variables etc.
+
+# Architecture
+Component Structure: Organize files by feature with directories (e.g., dashboard, auth).
+Use React for frontend.
+
+# State Management
+Use Zustand or Redux for global state management; leverage Context API for component-level state.
+
+# Performance Optimization
+Implement React.memo, useMemo, and useCallback for performance enhancements.
+
+# Styling
+Use Tailwind CSS for styling with utility-first approach. Ensure design is responsive.
+Always use modern and simple user interface.
+User experience is first focus.
+Use basic colors to be eye-friendly.
+
+# Routing
+Utilize react-router-dom for managing navigation and dynamic routing.
+
+# Error Handling
+Apply validation using Zod; manage errors gracefully with user-friendly messages.
+
+# Security
+Sanitize user inputs to prevent XSS attacks.
